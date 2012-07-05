@@ -1,0 +1,38 @@
+Useful PowerShell Tools for IT Systems Administrators
+
+    PowerZip
+        PowerShell Module to zip files
+        List of Available Commands :
+            New-Zip : Create a zip from any file piped in
+            Get-FileFromZip : Extract files from a zip file
+            New-AutoZip : Create a zip archive recursively (see examples) in a directory tree
+
+    PowerScheduledTasks
+        PowerShell Module to manage Windows Scheduled Tasks (Get, Start, Stop)
+
+    PowerNet
+        PowerShell Module for Network Diagnostics
+        List of Available Commands :
+            Send-TCPMessage
+            Receive-TCPMessage
+            Send-UDPMessage
+            Receive-UDPMessage
+            Test-TCPPort
+        3 cmdlets for a monitoring tool called "Xymon" (aka BigBrother, Hobbit), see : http://en.wikipedia.org/wiki/Xymon
+            Enable-Monitoring
+            Disable-Monitoring
+            Write-Monitoring
+
+    PowerFileWatcher
+        PowerShell Module that monitors incoming files
+
+    PowerBizTalk
+        PowerShell Module to manage Microsoft BizTalk Server (2006+)
+            Components you can manage :
+                Applications
+                Host Instances
+                Orchestrations
+                Receive Locations
+                Send Ports
+                Send Port Groups
+                Service Instances
