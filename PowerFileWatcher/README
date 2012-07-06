@@ -1,0 +1,28 @@
+Release Notes
+PowerShell Module that monitors incoming files
+
+Requirements :
+
+    PowerShell 2.0
+
+
+USAGE
+
+    Three (3) mandatory parameters :
+        FileName : the file name expected to arrive
+        TimeOut : the maximum time, in seconds, allotted for the file to arrive
+        ChangeType : the change type expected [ Created | Deleted | Changed | Renamed ]
+
+    One (1) optional switch :
+        IncludeSubDirectories : if the file is expected to arrive in a subdirectory
+
+
+EXAMPLES
+
+    Looking for a file named "test.txt" in the directory "c:\", timeout = 2 minutes
+        Start-FileWatcher -FileName "c:\test.txt" -TimeOut 120 -ChangeType "Created"
+
+    Looking for an xml file, in a directory created while arrival of the file, timeout = 5 minutes, root directory is "c:\"
+        Start-FileWatcher -FileName "c:\*.xml" -TimeOut 300 -ChangeType "Created" -IncludeSubDirectories
+
+    IF THE FILE HAS ARRIVED, IT WILL RETURN THE NAME OF THE FILE
