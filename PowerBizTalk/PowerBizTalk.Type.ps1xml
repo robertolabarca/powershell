@@ -1,0 +1,184 @@
+<Types>
+
+	<Type>
+		<Name>Microsoft.BizTalk.ExplorerOM.Application</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					return $this.Name
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					return $this.Status
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>
+
+	<Type>
+		<Name>System.Management.ManagementObject#root\MicrosoftBizTalkServer\MSBTS_Orchestration</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					return $this.Name
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					switch ($this.OrchestrationStatus)
+					{
+						'1' { $State = "Unbound" }
+						'2' { $State = "Bound" }
+						'3' { $State = "Stopped" }
+						'4' { $State = "Started" }
+						default { $State = "N/A" }
+					}
+					return $State
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>
+	
+	<Type>
+		<Name>System.Management.ManagementObject#root\MicrosoftBizTalkServer\MSBTS_SendPortGroup</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					return $this.Name
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					switch ($this.Status)
+					{
+						'1' { $State = "Bound" }
+						'2' { $State = "Stopped" }
+						'3' { $State = "Started" }
+						default { $State = "N/A" }
+					}
+					return $State
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>
+	
+	<Type>
+		<Name>System.Management.ManagementObject#root\MicrosoftBizTalkServer\MSBTS_SendPort</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					return $this.Name
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					switch ($this.Status)
+					{
+						'1' { $State = "Bound" }
+						'2' { $State = "Stopped" }
+						'3' { $State = "Started" }
+						default { $State = "N/A" }
+					}
+					return $State
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>
+	
+	<Type>
+		<Name>System.Management.ManagementObject#root\MicrosoftBizTalkServer\MSBTS_ReceiveLocation</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					return $this.Name
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					switch ($this.IsDisabled)
+					{
+						'False' { $State = "Enabled" }
+						'True' { $State = "Disabled" }
+						default { $State = "N/A" }
+					}
+					return $State
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>
+	
+	<Type>
+		<Name>System.Management.ManagementObject#root\MicrosoftBizTalkServer\MSBTS_HostInstance</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					return $this.Name
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					switch ($this.ServiceState)
+					{
+						'1' { $State = "Stopped" }
+						'2' { $State = "Start pending" }
+						'3' { $State = "Stop pending" }
+						'4' { $State = "Running" }
+						'8' { $State = "Unknown" }
+						default { $State = "N/A" }
+					}
+					return $State
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>	
+	
+	<Type>
+		<Name>System.Management.ManagementObject#root\MicrosoftBizTalkServer\MSBTS_ServiceInstance</Name>
+		<Members>
+			<ScriptProperty>
+				<Name>Item</Name>
+				<GetScriptBlock>
+					if ( $this.AssemblyName )
+					{
+						return $this.AssemblyName+'.'+$this.ServiceName
+					}
+					else
+					{
+						return $this.ServiceName
+					}
+				</GetScriptBlock>
+			</ScriptProperty>
+			<ScriptProperty>
+				<Name>State</Name>
+				<GetScriptBlock>
+					switch ($this.ServiceStatus)
+					{
+						'1' { $State = "Ready to run" }
+						'2' { $State = "Active" }
+						'4' { $State = "Suspended (resumable)" }
+						'8' { $State = "Dehydrated" }
+						'16' { $State = "Completed with discarded messages" }
+						'32' { $State = "Suspended (not resumable)" }
+						'64' { $State = "In breakpoint" }
+						default { $State = "N/A" }
+					}
+					return $State
+				</GetScriptBlock>
+			</ScriptProperty>
+		</Members>
+	</Type>	
+	
+</Types>
