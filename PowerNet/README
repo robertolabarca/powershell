@@ -1,0 +1,36 @@
+Release Notes
+PowerShell Module for Network Diagnostics
+
+Requirements :
+
+    PowerShell 2.0
+
+
+USAGE
+
+==> EndPoint can be a HostName or an IP address
+
+    Send a TCP Message => Send-TCPMessage -EndPoint localhost -Port 12345 -Message Test
+    Receive a TCP Message => Receive-TCPMessage -Port 12345
+    Send a UDP Message => Send-UDPMessage -EndPoint localhost -Port 12345 -Message Test
+    Receive a UDP Message => Receive-UDPMessage -Port 12345
+    Test a TCP Port => Test-TCPPort -EndPoint server1 -Port 80 (return true if port is open, false otherwise) 
+
+
+3 cmdlets for a monitoring tool called "Xymon" (aka BigBrother, Hobbit), see : http://en.wikipedia.org/wiki/Xymon
+
+    Enable-Monitoring => Enable-Monitoring -Url http://monitoringtool -Port 1234 -Client server1 -Column conn
+    Disable-Monitoring => Disable-Monitoring -Url http://monitoringtool -Port 1234 -Client server1 -Column conn -Message "WSUS Updates" -Duration 2h
+    Write-Monitoring => Write-Monitoring -Url http://monitoringtool -Port 1234 -Client server1 -Column test -Message "SQL Insert Fail !" -Color red 
+
+
+List of Available Commands :
+
+    Send-TCPMessage
+    Receive-TCPMessage
+    Send-UDPMessage
+    Receive-UDPMessage
+    Test-TCPPort
+    Enable-Monitoring
+    Disable-Monitoring
+    Write-Monitoring
