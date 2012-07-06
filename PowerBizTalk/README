@@ -12,15 +12,13 @@ Important : You must run the module on the BizTalk Server
 
 What does this module allows you to control ?
 
-					Action
-Component 			Start 	Stop 	Get 	Enlist 	Unenlist 	Terminate 	Enable 	Disable
-Applications 		x 		x 		x 					
-Host Instances 		x 		x 		x 					
-Orchestrations 		x 		x 		x 		x 		x 			
-Receive Locations 					x 										x 		x
-Send Ports 			x 		x 		x 		x 		x 			
-Send Port Groups 	x 		x 		x 		x 		x 			
-Service Instances 					x 							x 		
+Applications => Start / Stop / Get
+Host Instances => Start / Stop / Get
+Orchestrations => Start / Stop / Get / Enlist / Unenlist
+Receive Locations => Get / Enable / Disable
+Send Ports => Start / Stop / Get / Enlist / Unenlist
+Send Port Groups => Start / Stop / Get / Enlist / Unenlist
+Service Instances => Get / Terminate
 
 
 USAGE
