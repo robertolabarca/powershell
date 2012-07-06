@@ -1,0 +1,32 @@
+Release Notes
+PowerShell Module that allows you to control Windows Scheduled Tasks
+
+Requirements :
+
+    PowerShell 2.0
+    Schtasks.exe
+
+    For Windows Vista Systems and above, you can use these modules : http://code.msdn.microsoft.com/PowerShellPack
+
+
+USAGE
+
+    List Scheduled Tasks => Get-ScheduledTask
+    Look for a specific Scheduled Task => Get-ScheduledTask -TaskName Task1 (support regular expressions)
+
+    You can also connect to a remote computer, here are some examples :
+    Start a Scheduled Task => Start-ScheduledTask -TaskName Task1 -HostName Computer1
+    Stop a Scheduled Task => Stop-ScheduledTask -TaskName Task1 -HostName Computer1 
+
+
+You can pipe Commands like this :
+
+    Stop All Scheduled Tasks => Get-ScheduledTask | Stop-ScheduledTask 
+
+
+
+List of Available Commands :
+
+    Get-ScheduledTask
+    Start-ScheduledTask
+    Stop-ScheduledTask
