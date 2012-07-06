@@ -1,0 +1,85 @@
+Release Notes
+PowerShell Module that allows you to control Microsoft BizTalk Server (2006+) via PowerShell
+
+Requirements :
+
+    PowerShell 2.0 in 32bit mode (due to dependency with 'Microsoft.BizTalk.ExplorerOM' assembly)
+    Microsoft BizTalk Server 2006 or above
+    'Microsoft.BizTalk.ExplorerOM' assembly
+
+
+Important : You must run the module on the BizTalk Server
+
+What does this module allows you to control ?
+
+					Action
+Component 			Start 	Stop 	Get 	Enlist 	Unenlist 	Terminate 	Enable 	Disable
+Applications 		x 		x 		x 					
+Host Instances 		x 		x 		x 					
+Orchestrations 		x 		x 		x 		x 		x 			
+Receive Locations 					x 										x 		x
+Send Ports 			x 		x 		x 		x 		x 			
+Send Port Groups 	x 		x 		x 		x 		x 			
+Service Instances 					x 							x 		
+
+
+USAGE
+
+    List BizTalk Applications => Get-Application
+    Look for a specific BizTalk Application => Get-Application -Name Application1 (support regular expressions)
+    Stop an Application => Stop-Application -Name Application1 
+
+
+You can pipe Commands like this :
+
+    Stop All Applications => Get-Application | Stop-Application 
+
+
+In order to respect PowerShell Programming Best Practices, some verbs have been changed
+
+    Register = Enlist
+    Unregister = UnEnlist
+    Remove = Terminate
+
+
+List of Available Commands :
+
+    Applications
+        Get-Application
+        Start-Application
+        Stop-Application
+
+    Host Instances
+        Get-HostInstance
+        Start-HostInstance
+        Stop-HostInstance
+
+    Orchestrations
+        Get-Orchestration
+        Start-Orchestration
+        Stop-Orchestration
+        Register-Orchestration
+        Unregister-Orchestration
+
+    Receive Locations
+        Get-ReceiveLocation
+        Enable-ReceiveLocation
+        Disable-ReceiveLocation
+
+    Send Ports
+        Get-SendPort
+        Start-SendPort
+        Stop-SendPort
+        Register-SendPort
+        Unregister-SendPort
+
+    Send Port Groups
+        Get-SendPortGroup
+        Start-SendPortGroup
+        Stop-SendPortGroup
+        Register-SendPortGroup
+        Unregister-SendPortGroup
+
+    Service Instances
+        Get-ServiceInstance
+        Remove-ServiceInstance
