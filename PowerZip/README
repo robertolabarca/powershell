@@ -1,0 +1,68 @@
+Release Notes
+PowerShell Module that allows you to zip files
+
+Requirements :
+
+    PowerShell 2.0
+    'SharpZipLib' assembly (already included in the zip above) 
+
+YOU MUST ADD "ICSharpCode.SharpZipLib.dll" TO THE GLOBAL ASSEMBLY CACHE (GAC)
+
+List of Available Commands :
+
+    New-Zip
+        PARAMETER Source
+            Set the name of the source to zip (file or directory)
+        PARAMETER ZipFile
+            Set the name of the zip file to create
+        PARAMETER Recurse
+            Browse the source recursively
+        PARAMETER Include
+            Include only items you specify
+        PARAMETER Exclude
+            Exclude items you specify
+        PARAMETER AbsolutePaths
+            Preserve the absolute path name of each item in the zip container
+        PARAMETER DeleteAfterZip
+            Delete source items after successful zip
+                EXAMPLE
+                    New-Zip -Source C:\scripts\PowerShell -ZipFile C:\Archive\Scripts.zip -Include *.ps1 -DeleteAfterZip
+                    Copies all PS1 files from the C:\scripts\PowerShell directory to C:\Archive\Scripts.zip and delete them after successful ZIP
+
+    Get-FileFromZip
+        PARAMETER ZipFile
+            Set the name of the zip file to extract
+        PARAMETER Destination
+            Set the destination directory
+        PARAMETER Filter
+            Filter only items you specify (please don't use wildcards, for example use .ps1 instead of *.ps1)
+                EXAMPLE
+                    Get-FileFromZip -ZipFile C:\Archive\Scripts.zip -Destination C:\Extracted -Filter .ps1
+                    Extract all PS1 files from C:\Archive\Scripts.zip to the C:\Extracted directory
+
+    New-AutoZip
+        PARAMETER Source
+            Set the name of the source to zip (must be a directory)
+        PARAMETER RetentionDays
+            Defines which files to archive (files older than the "RetentionDays" parameter will be archived)
+        PARAMETER Include
+            Include only items you specify
+        PARAMETER Exclude
+            Exclude items you specify
+        PARAMETER Recurse
+            Browse the source recursively
+                EXAMPLE
+                    New-AutoZip -Source C:\WINNT\system32\Logfiles -RetentionDays 30 -Recurse
+                    Archive every file older than 30 days located in the "C:\WINNT\system32\Logfiles" directory, recursively.
+                        For every folder zipped, the Archive will be located in :
+                            root directory
+                                a subfolder, named _AutoArchive_
+                                    a subfolder folder named with the current year
+                                        a subfolder named with the current month
+                                            the archive named with the following timestamp : yyyyMMddHHmmss.zip
+                        Here is an example of a complex structure zipped with New-AutoZip :
+                            C:\WINNT\system32\LogFiles\MyWebSite1\W3SVC5239163533
+                                _AutoArchive_
+                                    2011
+                                        03
+                                            20110315134106.zip
