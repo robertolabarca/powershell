@@ -7,8 +7,8 @@ Useful PowerShell Tools for IT Systems Administrators
             Get-FileFromZip : Extract files from a zip file
             New-AutoZip : Create a zip archive recursively (see examples) in a directory tree
 
-    PowerScheduledTasks
-        PowerShell Module to manage Windows Scheduled Tasks (Get, Start, Stop)
+    PowerScheduledTasks (Now worked in w2003 and win7 )
+        PowerShell Module to manage Windows Scheduled Tasks (Get, Start, Stop, Get-ScheduledTaskFilterby)
 
     PowerNet
         PowerShell Module for Network Diagnostics
